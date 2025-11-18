@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>mariloks</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0; /* fondo rosa pastel */
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #d6336c; /* rosa fuerte */
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #ffb3c6; /* rosa pastel */
+            color: #d6336c; /* texto rosa fuerte */
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff99b3; /* más oscuro al pasar el mouse */
+        }
+
+        .graficas-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .grafica {
+            background-color: #fff0f5; /* card rosa muy suave */
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 400px;
+            transition: transform 0.3s;
+        }
+
+        .grafica:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+    <script>
+        function mostrarGraficas() {
+            const contenedor = document.getElementById('graficas');
+            contenedor.style.display = 'flex';
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Division Del DataSet</h1>
+
+    <button onclick="mostrarGraficas()">Generar Graficas</button>
+
+    <div id="graficas" class="graficas-container" style="display: none;">
+        {% for archivo in archivos %}
+            <div class="grafica">
+                <img src="{% static archivo %}" alt="Gráfica">
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
